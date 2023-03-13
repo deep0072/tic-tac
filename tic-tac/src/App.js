@@ -17,14 +17,16 @@ export default function Board() {
   function handleClick(i) {
     const newSquare = squares.slice();
 
-    if (xIsNext || getWinner(squares)) {
-      newSquare[i] = "X";
-    } else {
-      newSquare[i] = "O";
-    }
+    if (!newSquare[i] && !getWinner(squares)) {
+      if (xIsNext || getWinner(squares)) {
+        newSquare[i] = "X";
+      } else {
+        newSquare[i] = "O";
+      }
 
-    setSquares(newSquare);
-    setxIsnext(!xIsNext);
+      setSquares(newSquare);
+      setxIsnext(!xIsNext);
+    }
   }
 
   function resetBoard() {
